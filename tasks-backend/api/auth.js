@@ -7,7 +7,6 @@ module.exports = app => {
         if(!req.body.email || !req.body.password){
             return res.status(400).send('Dados incompletos')
         }
-        console.log('Backend escutou...')
 
         const user = await app.db('users')
             .whereRaw("LOWER(email) = LOWER(?)", req.body.email)
@@ -16,7 +15,7 @@ module.exports = app => {
         if(user) {
             bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
                 if(err || !isMatch){
-                    return res.status(401).send()
+                    return res.status(401).send('A senha informada é inválida')
                 }
 
                 const payLoad = { id: user.id }
