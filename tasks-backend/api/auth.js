@@ -7,6 +7,7 @@ module.exports = app => {
         if(!req.body.email || !req.body.password){
             return res.status(400).send('Dados incompletos')
         }
+        console.log('Backend escutou...')
 
         const user = await app.db('users')
             .whereRaw("LOWER(email) = LOWER(?)", req.body.email)
