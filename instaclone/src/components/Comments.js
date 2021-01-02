@@ -3,8 +3,6 @@ import {
     View,
     Text,
     StyleSheet,
-    Dimensions,
-    Alert
 } from 'react-native'
 
 export default class Comments extends Component {
