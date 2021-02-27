@@ -5,27 +5,29 @@ import {View, Text, Image} from 'react-native';
 import styles from './styles';
 
 const Post = (props) => {
+
+  const post = props.post;
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{uri: 'https://dummyimage.com/vga'}}
+        source={{uri: post.image}}
       />
 
-      <Text style={styles.bedrooms}>1 bed 1 bedroom</Text>
+      <Text style={styles.bedrooms}>{post.bed} bed {post.bedroom} bedroom</Text>
 
       <Text style={styles.description} numberOfLines={2}>
-        Entire flat, Puerto de la cruz lrm ofi pdfsopdfias doasimdoas idaoism
-        daosimda soidmasod imasodiamsdoa ismdoasidmaosidm asoidmasod imasdoim
+        {post.type}, {post.title}
       </Text>
 
       <Text style={styles.prices}>
-        <Text style={styles.oldPrice}>$36</Text>
-        <Text style={styles.price}> $30</Text>
+        <Text style={styles.oldPrice}>${post.oldPrice}</Text>
+        <Text style={styles.price}> ${post.newPrice}</Text>
         / night
       </Text>
 
-      <Text style={styles.totalPrice}>$230 total</Text>
+      <Text style={styles.totalPrice}>${post.totalPrice} total</Text>
     </View>
   );
 };
